@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: aulatube
+    runtime: node
+    plan: starter        # los discos persistentes requieren un plan de pago
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DATA_DIR
+        value: /var/data
+      - key: MAX_MB
+        value: "300"
+    disk:
+      name: aulatube-data
+      mountPath: /var/data
+      sizeGB: 10
